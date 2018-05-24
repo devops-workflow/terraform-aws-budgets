@@ -2,6 +2,6 @@
 module "budgets" {
   source    = "../../"
   budgets   = "${var.budgets}"
-  email     = "snemetz@wiser.com"
+  email     = "user@company.com"
   time_unit = "ANNUALLY"
 }
