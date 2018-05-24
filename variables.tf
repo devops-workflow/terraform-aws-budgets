@@ -6,7 +6,7 @@ variable "service" {
 // Specific to module
 variable "budget_name_prefix" {
   description = "Text to prefix budget names with"
-  default     = "Testing-"
+  default     = ""
 }
 
 variable "budget_type" {
