@@ -1,0 +1,10 @@
+Issues budgets resource:
+
+Why start date required? AWS doc says it is optional and has rules of how it is created when not provided
+Work around: Calculate start of month and provide
+
+When account id is not provided get "Account min size is 12". Appears provider is not providing it properly
+Work around: provide account id
+
+Issue with changing budget name. This should force the budget to be recreated. AWS doesn't allow changing the name
+Current generates error: Failed to call UpdateBudget - Unable to get budget: BUDGET_NEW_NAME - the budget doesn't exist.
