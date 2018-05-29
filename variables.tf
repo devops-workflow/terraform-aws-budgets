@@ -1,11 +1,11 @@
-variable "service" {
-  description = "Not used yet"
-  default     = "cmp-service"
-}
-
 // Specific to module
 variable "budget_name_prefix" {
   description = "Text to prefix budget names with"
+  default     = ""
+}
+
+variable "budget_name" {
+  description = "Budget name (when managing a single budget)"
   default     = ""
 }
 
@@ -20,6 +20,11 @@ variable "budgets" {
   default     = []
 }
 
+variable "cost_filter_type" {
+  description = "Cost filter type (when managing a single budget)"
+  default     = "TagKeyValue"
+}
+
 variable "limit_amount" {
   description = "Budget limit amount"
   default     = "100"
@@ -30,17 +35,27 @@ variable "limit_unit" {
   default     = "USD"
 }
 
+variable "tag_key" {
+  description = "Tag key for cost filter by tag (TagKeyValue)"
+  default     = "Stack"
+}
+
+variable "tag_value" {
+  description = "Tag value for cost filter by tag (TagKeyValue)"
+  default     = ""
+}
+
 variable "time_unit" {
   description = "Budget time period"
   default     = "MONTHLY"
 }
 
-variable "cost_filter_type" {
-  description = "Not used yet"
-  default     = "TagKeyValue"
+variable "email" {
+  description = "Email address to send budget alerts to. Used by account budgets."
+  default     = ""
 }
 
-variable "email" {
-  description = "Email address to send budget alerts to"
-  default     = ""
+variable "emails" {
+  description = "List of email addresses to send budget alerts to. Maximum of 10. Used by single budgets"
+  default     = []
 }
