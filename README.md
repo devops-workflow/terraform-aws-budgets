@@ -7,7 +7,7 @@ Terraform module to setup AWS budgets and notifications
 For now it can manage 2 types of budgets:
 
 - Account budgets for a single account or multiple linked accounts.
-Each with it's own limit.
+  Each with it's own limit.
 - Budget by tag
 
 Notification is only supported for a single email address
