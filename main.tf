@@ -37,6 +37,8 @@ locals {
       UsageType = ""
     }
   }
+  month = "${substr(timestamp(), 5, 2)}"
+  month_num = "${substr(local.month,0, 1) == "0" ? substr(local.month,1, 1) : local.month}"
 }
 
 /**/
@@ -59,7 +61,7 @@ resource "aws_budgets_budget" "budget" {
   time_period_start = "${var.time_unit == "ANNUALLY" ?
     "${substr(timestamp(), 0, 5)}01-01_00:00" :
     var.time_unit == "QUARTERLY" ?
-      "${substr(timestamp(), 0, 5)}${format("%02d", (substr(timestamp(), 5, 2) - 1) / 3 * 3 + 1)}-01_00:00" :
+      "${substr(timestamp(), 0, 5)}${format("%02d", (local.month_num - 1) / 3 * 3 + 1)}-01_00:00" :
       "${substr(timestamp(), 0, 8)}01_00:00"
   }"
 
@@ -87,7 +89,7 @@ resource "aws_budgets_budget" "budgets" {
   time_period_start = "${var.time_unit == "ANNUALLY" ?
     "${substr(timestamp(), 0, 5)}01-01_00:00" :
     var.time_unit == "QUARTERLY" ?
-      "${substr(timestamp(), 0, 5)}${format("%02d", (substr(timestamp(), 5, 2) - 1) / 3 * 3 + 1)}-01_00:00" :
+      "${substr(timestamp(), 0, 5)}${format("%02d", (local.month_num - 1) / 3 * 3 + 1)}-01_00:00" :
       "${substr(timestamp(), 0, 8)}01_00:00"
   }"
 
@@ -101,4 +103,3 @@ resource "aws_budgets_budget" "budgets" {
 }
 
 # Attributes: id
-
