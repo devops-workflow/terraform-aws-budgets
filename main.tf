@@ -37,7 +37,8 @@ locals {
       UsageType = ""
     }
   }
-  month = "${substr(timestamp(), 5, 2)}"
+
+  month     = "${substr(timestamp(), 5, 2)}"
   month_num = "${substr(local.month,0, 1) == "0" ? substr(local.month,1, 1) : local.month}"
 }
 
@@ -103,3 +104,4 @@ resource "aws_budgets_budget" "budgets" {
 }
 
 # Attributes: id
+
